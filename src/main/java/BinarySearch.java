@@ -18,4 +18,22 @@ public class BinarySearch {
             }
         }
     }
+
+    public boolean search2(List<Integer> sortedList, int target) {
+        var middle = sortedList.size() / 2;
+
+        if(sortedList.size() > 0) {
+            if(sortedList.get(middle) == target) {
+                return true;
+            } else {
+                if(sortedList.get(middle) > target) {
+                    return search2(sortedList.subList(0, middle), target);
+                } else {
+                    return search2(sortedList.subList(middle, sortedList.size()), target);
+                }
+            }
+        } else {
+            return false;
+        }
+    }
 }
